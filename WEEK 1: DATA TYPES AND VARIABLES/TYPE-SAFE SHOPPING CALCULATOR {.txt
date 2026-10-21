@@ -1,0 +1,17 @@
+public class TypeShoppingCalcu {
+    public static void main(String[] args) {
+        String stORenAME = "VELOURA COLLECTION PH 2.0";
+        double unirICe = 396.64;
+        int quant = 37;
+
+        double totCost = quant * unirICe;
+
+        // double is appropriate for this exercise because the total can be a
+        //decimal number; int is only used to store whole numbers;.
+        System.out.println("----------- PURCHASED SUMMARY -----------");
+        System.out.println("STORE NAME: " + stORenAME);
+        System.out.println("QUANTITY: " + quant);
+        System.out.printf("UNIT PRICE: %.2f%n", unirICe);
+        System.out.printf("TOTAL COST: %.2f%n", totCost);
+    }
+}
