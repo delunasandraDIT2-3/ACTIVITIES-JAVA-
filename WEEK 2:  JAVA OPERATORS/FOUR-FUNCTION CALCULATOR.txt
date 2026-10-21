@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Fourfunction {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        System.out.println("-------- CALCULATOR --------");
+ 
+        System.out.print("ENTER THE FIRST INTEGER: ");
+        int numBEr1 = sc.nextInt();
+
+        System.out.print("ENTER THE SECOND INTEGER: ");
+        int numBEr2 = sc.nextInt();
+
+        System.out.println("\n----- THE ARITHMETIC OPERATIONS --------");
+
+        System.out.println("ADDITION (+): " + (numBEr1 + numBEr2));
+        System.out.println("SUBDRACTION (-): " + (numBEr1 - numBEr2));
+        System.out.println("MULTIPLICATION (*): " + (numBEr1 * numBEr2));
+
+        if (numBEr2 != 0) {
+            System.out.println("DIVISION (/): " + (numBEr1 / numBEr2));
+            System.out.println("REMAINDER (%): " + (numBEr1 % numBEr2));
+        } else {
+            System.out.println("DIVISION (/): UNDEFINED");
+            System.out.println("REMAINDER (%): UNDEFINED");
+        }
+
+        // The integer division is done towards zero.
+        // For negative operands, the quotient can
+        // be positive or negative. The remainder follows
+        // the dividend's sign when nonzero.
+
+        sc.close();
+    }
+}
