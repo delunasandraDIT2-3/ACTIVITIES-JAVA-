@@ -1,0 +1,65 @@
+public class OverflowandReference {
+    public static void main(String[] args) {
+
+        byte numb = 127;
+
+        System.out.println("BEFORE INCREMENT: " + numb);
+
+        numb++;
+
+        System.out.println("AFTER INCREMENT: " + numb);
+
+        String fiRSt = new String("PROGRAMMING");
+        String seCONd = new String("PROGRAMMING");
+        String thIRd = "PROGRAMMING";
+
+        System.out.println("\n-------- THE STRING COMPARISON --------");
+
+        System.out.println("FIRST == SECOND: "
+                + (fiRSt == seCONd));
+        System.out.println("FIRST. EQUALS (SECOND): "
+                + fiRSt.equals(seCONd));
+
+        System.out.println("FIRST == THIRD: "
+                + (fiRSt == thIRd));
+        System.out.println("FIRST.EQUALS (THIRD): "
+                + fiRSt.equals(thIRd));
+
+        System.out.println("SECOND == THIRD: "
+                + (seCONd == thIRd));
+        System.out.println("SECOND.EQUALS (THIRD): "
+                + seCONd.equals(thIRd));
+
+        /*
+         * The new String() makes FIRST == SECOND false
+         * creates separate objects.
+         * first == third is false because first is a new
+         * object while third refers to a pooled literal.
+         * Since first is a new variable, FIRST == THIRD false
+         * All equals() comparisons are true because all
+         * three String objects contain "Java".
+         */
+
+        int[] orig = {5, 15, 25};
+        int[] refer = orig;
+
+        System.out.println("\n---------- COMMON ARRAY ----------");
+        System.out.println("BEFORE (ORIGINAL) [0] = "
+                + orig[0]);
+        System.out.println("BEFORE (REFERENCE) [0] = "
+                + refer[0]);
+
+        refer[0] = 50;
+
+        System.out.println("AFTER (ORIGINAL) [0] = "
+                + orig[0]);
+        System.out.println("AFTER (REFERENCE) [0] = "
+                + refer[0]);
+
+        /*
+         * The reference and original points to the same array.
+         * Modifying reference[0] also changes the value
+         * observed through original[0].
+         */
+    }
+}
