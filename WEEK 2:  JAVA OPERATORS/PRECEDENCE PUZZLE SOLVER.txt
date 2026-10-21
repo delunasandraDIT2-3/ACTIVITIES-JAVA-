@@ -1,0 +1,39 @@
+public class PrecedencePuzzleSolver {
+    public static void main(String[] args) {
+
+        int stOCk = 8500;
+        int sOLd = 1250;
+        int deliv = 6;
+
+        System.out.println("---------- KM STYLE PH CLOTHES STOCK PUZZLE ----------");
+
+        // First Statement 
+        // Multiplication is processed first because it has greater precedence than subtraction.
+        // Predicted result is true 
+       
+        boolean resu1 = stOCk - sOLd * deliv > 500
+                && stOCk >= 8000;
+        System.out.println("First Statement: " + resu1);
+
+        // Second Statement 
+        // Predicted result is true
+        // Java performs division  first, followed by addition.
+        boolean resu2 = stOCk / sOLd + deliv > 20
+                || sOLd < deliv;
+        System.out.println("Second Statement: " + resu2);
+
+        // Third Statement 
+        // Predicted result is true
+        // Pre-increment increases the value before the multiplication operation.
+        boolean resu3 = ++deliv * sOLd > stOCk
+                && stOCk > 5000;
+        System.out.println("Third Statement: " + resu3);
+        
+        // CORRECTION FOR EXPRESSION 3:
+        // The predicted result was incorrect.
+        // Pre-increment modify delivery from 6 to 7.
+        // Multiplication occurs prior to comparison.
+        // 7 * 1250 = 8750, which is greater than 8500.
+        // So, the actual result is true.
+    }
+}
