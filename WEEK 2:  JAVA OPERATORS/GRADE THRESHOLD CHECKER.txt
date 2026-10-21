@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class GradeChecker {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        double ave = 0;
+        int absent = 0;
+
+        System.out.println("-------- STUDENT GRADE --------");
+
+        System.out.print("ENTER THE AVERAGE GRADE OF STUDENT: ");
+        ave = input.nextDouble();
+
+        System.out.print("ENTER THE ABSENCES GRADE OF STUDENT: ");
+        absent = input.nextInt();
+
+        boolean graderequire = ave >= 75 && absent <= 3;
+        boolean excellgrade = ave >= 90;
+        boolean passed = graderequire || excellgrade;
+
+        System.out.println("\n-------- STUDENT FINAL EVALUATION GRADE --------");
+        System.out.println("THE AVERAGE GRADE: " + ave);
+        System.out.println("THE ABSENCES: " + absent);
+        System.out.println("GRADE REQUIREMENT: " + graderequire);
+        System.out.println("EXCELLENT GRADE (90+): " + excellgrade);
+
+        if (passed) {
+            System.out.println("FINAL STATUS: PASS");
+
+            if (graderequire) {
+                System.out.println("EXPLANATION: At least 75% attendance and no more than 3 absences.Absences: No more than 3, attendance: At least 75%..");
+            } else {
+                System.out.println("EXPLANATION: GPA 90 or higher (no matter for absences).");
+            }
+        } else {
+            System.out.println("FINAL STATUS: FAIL");
+            System.out.println("EXPLANATION: Neither passing condition was satisfied.");
+        }
+
+        input.close();
+    }
+}
