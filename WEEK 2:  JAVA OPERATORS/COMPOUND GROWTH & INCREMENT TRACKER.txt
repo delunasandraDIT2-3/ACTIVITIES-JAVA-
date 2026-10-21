@@ -1,0 +1,34 @@
+public class CompoundGrowthIncrementTracker {
+    public static void main(String[] args) {
+
+        double ear = 9700;
+        int count = 1;
+
+        System.out.println("-------- PASTRIES ON THE GO INCOME TRACKER --------");
+        System.out.println("OPENING EARNINGS: PHP " + ear);
+
+        ear += 1057;
+        System.out.println("POST-DELIVERY EARNINGS: " + ear);
+
+        ear *= 1.25;
+        System.out.println("BALANCE WITH THE 10% BONUS: " + ear);
+
+        ear += 491;
+        System.out.println("INCOME AFTER EXTRA DELIVERIES: " + ear);
+
+        ear *= 1.20;
+        System.out.println("BALANCE WITH THE 15% BONUS: " + ear);
+
+        System.out.println("\n----------- INCREMENT -----------");
+
+        // Postfix prints the previous value before adding one.
+        System.out.println("POSTFIX: " + count++);
+        System.out.println("COUNT AFTER POSTFIX INCREMENT: " + count);
+
+        // Prefix adds one first before printing the result.
+        System.out.println("PREFIX: " + ++count);
+        System.out.println("COUNT AFTER PREFIX INCREMENT: " + count);
+
+        System.out.println("\nTOTAL REVENUE: " + ear);
+    }
+}
