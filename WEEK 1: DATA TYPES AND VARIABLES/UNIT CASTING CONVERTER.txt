@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class UnitcastingConverter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("ENTER THE CENTIMETERS: ");
+        double cm = sc.nextDouble();
+
+        int meTErs = (int) (cm / 100);
+        double remaiCentime = cm - (meTErs * 100);
+
+        System.out.println("WHOLE METERS: " + meTErs);
+        System.out.printf("REMAINING CENTIMETERS: %.2f cm%n", remaiCentime);
+
+        // Implicit widening: int is automatically converted to double.
+        int nuMb = 95;
+        double widen = nuMb;
+        System.out.println("\nIMPLICIT WIDENING: " + widen);
+
+        // Explicit narrowing: the fractional part is discarded.
+        double deci = 114.88;
+        int narrow = (int) deci;
+        System.out.println("EXPLICIT NARROWING: " + narrow);
+        // The .88 is lost; Java does not round, it truncates towards 0.
+
+        sc.close();
+    }
+}
