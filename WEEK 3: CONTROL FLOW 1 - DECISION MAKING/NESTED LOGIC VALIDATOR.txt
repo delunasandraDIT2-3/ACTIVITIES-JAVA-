@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class LogicValidator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String regis_User = "DeLunaexaminee2026";
+        String regis_Pass = "Delunabar2026@@";
+        String appliStat = "APPROVED";
+
+        System.out.println("-------- BAR EXAMINATION APPLICANT LOGIN --------");
+
+        System.out.print("ENTER THE APPLICANT USERNAME: ");
+        String user = sc.nextLine();
+
+        if (user.equals(regis_User)) {
+            System.out.print("ENTER THE APPLICANT PASSWORD: ");
+            String pass = sc.nextLine();
+
+            if (pass.equals(regis_Pass)) {
+                if (appliStat.equals("APPROVED")) {
+                    System.out.println("\nLogin successful!");
+                    System.out.println("Greetings, our FUTURE PAGASA NG BAYAN !!!");
+                    System.out.println("APPLICATION STATUS: Approved");
+                    System.out.println("BAR EXAMINATION DASHBOARD: Access Granted");
+                } else {
+                    System.out.println("\nLogin failed!");
+                    System.out.println("YOUR BAR EXAMINATON APPLICATION IS NOT YET APPROVED.");
+                }
+            } else {
+                System.out.println("\nLogin failed!");
+                System.out.println("INCORRECT PASSWORD. PLEASE TRY AGAIN");
+            }
+        } else {
+            System.out.println("\nLogin failed!");
+            System.out.println("APPLICANT USERNAME IS NOT REGISTERED.");
+        }
+
+        sc.close();
+    }
+}
