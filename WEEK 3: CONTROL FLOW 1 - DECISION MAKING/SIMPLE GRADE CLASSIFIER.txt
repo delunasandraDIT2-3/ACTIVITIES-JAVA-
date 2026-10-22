@@ -1,0 +1,15 @@
+public class SimpleGradeClassifier {
+    public static void main(String[] args) {
+
+        int sco = 82;
+
+        System.out.println("-------- COMPUTER SYSTEMS SERVICING --------");
+        System.out.println("CSS TRAINING ASSESSMENT RESULT: " + sco);
+
+        if (sco >= 60) {
+            System.out.println("COMPENTENCY RESULT: PASSED");
+        } else {
+            System.out.println("COMPENTENCY RESULT: FAILED");
+        }
+    }
+}
