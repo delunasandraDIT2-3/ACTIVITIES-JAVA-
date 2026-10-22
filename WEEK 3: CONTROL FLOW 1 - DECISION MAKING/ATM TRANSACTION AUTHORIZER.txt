@@ -1,0 +1,101 @@
+public class TransacnAuthorizer {
+    public static void main(String[] args) {
+
+        String user = "Sandra De Luna";
+        String tier = "";
+        int pin = 5826;
+        double balan = 55000;
+        double withdraw = 10000;
+        double daily_With = 5000;
+        double daily_Lim = 0;
+        double feeCharges = 0;
+
+        if (user.equals("Sandra De Luna")) {
+            if (pin >= 1000 && pin <= 9999 && pin == 5826) {
+
+                System.out.println("-------- VERIFICATION COMPLETED --------.");
+
+                if (balan < 5000) {
+                    tier = "BRONZE";
+                    daily_Lim = 5000;
+                } else if (balan < 15000) {
+                    tier = "SILVER";
+                    daily_Lim = 10000;
+                } else if (balan < 50000) {
+                    tier = "GOLD";
+                    daily_Lim = 20000;
+                } else {
+                    tier = "PLATINUM";
+                    daily_Lim = 50000;
+                }
+
+                switch (tier) {
+                    case "BRONZE":
+                        feeCharges = 0.02;
+                        break;
+                    case "SILVER":
+                        feeCharges = 0.015;
+                        break;
+                    case "GOLD":
+                        feeCharges = 0.01;
+                        break;
+                    case "PLATINUM":
+                        feeCharges = 0.005;
+                        break;
+                    default:
+                        feeCharges = 0;
+                }
+
+                double fee = withdraw * feeCharges;
+
+                System.out.println("ACCOUNT CATEGORY: " + tier);
+                System.out.printf("TRANSACTION CHARGES: %.2f%%%n",
+                        feeCharges * 100);
+                System.out.println("MAXIMUM DAILY WITHDRAWAL: "
+                        + daily_Lim);
+
+                if (withdraw > 0) {
+                    if (withdraw <= balan) {
+                        if (daily_With + withdraw
+                                <= daily_Lim) {
+                            if (withdraw + fee <= balan) {
+
+                                System.out.println(
+                                        "TRANSACTION STATUS: APPROVED");
+                                System.out.printf(
+                                        "TRANSACTION CHARGES AND AMOUNT: %.2f%n",
+                                        fee);
+                                System.out.printf(
+                                        "WITHDRAWAL AMOUNT: %.2f%n",
+                                        withdraw);
+                                System.out.printf(
+                                        "AVAILABLE BALANCE %.2f%n",
+                                        balan - withdraw - fee);
+
+                            } else {
+                                System.out.println(
+                                    "TRANSACTION FAILED: INSUFFICIENT BALANCE "
+                                    + "to settle the withdrawal and fees.");
+                            }
+                        } else {
+                            System.out.println(
+                                "TRANSACTION  FAILED: INSUFFICIENT FUNDS.");
+                        }
+                    } else {
+                        System.out.println(
+                            "TRANSACTION  FAILED: MAXIMUM DAILY WITHDRAWAL LIMIT REACHED.");
+                    }
+                } else {
+                    System.out.println(
+                        "ACCESS DENIED PIN MUST CONTAIN FOUR DIGITS.");
+                }
+
+            } else {
+                System.out.println(
+                        "TRANSACTION  FAILED: PLEASE ENTER A VALUE ABOVE ZERO.");
+            }
+        } else {
+            System.out.println("ACCESS DENIED INVALID USERNAME.");
+        }
+    }
+}
