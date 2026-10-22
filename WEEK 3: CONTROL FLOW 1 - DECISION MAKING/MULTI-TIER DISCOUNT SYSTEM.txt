@@ -1,0 +1,34 @@
+public class MultitierDiscountSystem {
+    public static void main(String[] args) {
+        
+        String disco_Tier;
+        double purcha_Amount = 33000;
+        double disco_Percen;
+
+        if (purcha_Amount < 2500) {
+            disco_Percen = 0.00;
+            disco_Tier = "BASIC";
+        } else if (purcha_Amount < 5500) {
+            disco_Percen = 0.05;
+            disco_Tier = "STANDARD";
+        } else if (purcha_Amount < 11500) {
+            disco_Percen = 0.10;
+            disco_Tier = "PREMIUM";
+        } else if (purcha_Amount < 22500) {
+            disco_Percen = 0.15;
+            disco_Tier = "LUXURY";
+        } else {
+            disco_Percen = 0.20;
+            disco_Tier = "ROYAL";
+        }
+
+        double final_Price = purcha_Amount -
+                            (purcha_Amount * disco_Percen);
+
+        System.out.println("-------- BULGARY JEWELRY COLLECTION --------");
+        System.out.printf("THE AMOUNT OF PURCHASE: PHP %.2f%n", purcha_Amount);
+        System.out.printf("THE DISCOUNT PERCENTAGE: %.0f%%%n", disco_Percen * 100);
+        System.out.println("THE EXCLUSIVE CLIENT TIER: " + disco_Tier);
+        System.out.printf("FINAL AMOUNT: %.2f%n", final_Price);
+    }
+}
