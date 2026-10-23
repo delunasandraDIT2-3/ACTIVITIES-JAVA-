@@ -1,0 +1,37 @@
+import java.util.Arrays;
+
+public class SearchandSort {
+    public static void main(String[] args) {
+
+        int[] scoREs = {95, 98, 92, 87, 81, 99};
+        int tar = 99;
+        int fo_Index = -1;
+
+        System.out.println("-------- SUPERMODEL INTERNATIONAL SCORES --------");
+
+        // Search for the target runway score.
+        for (int i = 0; i < scoREs.length; i++) {
+            if (scoREs[i] == tar) {
+                fo_Index = i;
+                break;
+            }
+        }
+
+        if (fo_Index >= 0) {
+            System.out.println("----------- SUPERMODEL RUNWAY SCORES ------------");
+            System.out.println("MODEL SCORE: " + tar);
+            System.out.println("INDEX POSITION: " + fo_Index);
+        } else {
+            System.out.println("MODEL SCORE NOT FOUND!");
+        }
+
+        int[] sort_Score = Arrays.copyOf(scoREs, scoREs.length);
+        Arrays.sort(sort_Score);
+
+        // A copy was made and sorted, which did not destroy the original runway.
+        // Preserve the original index positions and keeps them in order.
+
+        System.out.println("ORIGINAL SCORES: " + Arrays.toString(scoREs));
+        System.out.println("SORTED SCORES: " + Arrays.toString(sort_Score));
+    }
+}
