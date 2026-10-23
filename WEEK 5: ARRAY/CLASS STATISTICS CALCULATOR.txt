@@ -1,0 +1,29 @@
+public class ClassStatisticsCalcu {
+    public static void main(String[] args) {
+        int[] maRKs = {97, 72, 79, 92, 84, 85, 70, 99};
+
+        int sUm = 0;
+        int highESt = maRKs[0];
+        int loWESt = maRKs[0];
+
+        for (int i = 0; i < maRKs.length; i++) {
+            sUm = sUm + maRKs[i];
+
+            if (maRKs[i] > highESt) {
+                highESt = maRKs[i];
+            }
+
+            if (maRKs[i] < loWESt) {
+                loWESt = maRKs[i];
+            }
+        }
+
+        double ave = (double) sUm / maRKs.length;
+
+        System.out.println("--------STUDENTS PERFORMANCE STATISTICS --------");
+        System.out.println("TOTAL SUM OF SCORE: " + sUm);
+        System.out.println("AVERAGE SCORE: " + ave);
+        System.out.println("HIGHEST SCORE: " + highESt);
+        System.out.println("LOWEST SCORE: " + loWESt);
+    }
+}
