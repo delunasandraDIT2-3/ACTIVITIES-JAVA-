@@ -1,0 +1,94 @@
+public class ClassRank {
+
+    static class Student {
+        String stud_name;
+        int[] quiz;
+
+        Student(String n, int[] q) {
+            stud_name = n;
+            quiz = q;
+        }
+
+        double ave() {
+            int tot = 0;
+            for (int scORe : quiz) {
+                tot += scORe;
+            }
+            return (double) tot / quiz.length;
+        }
+    }
+
+    static void sort(Student[] s) {
+        for (int i = 0; i < s.length - 1; i++) {
+            for (int j = 0; j < s.length - 1 - i; j++) {
+                if (s[j].ave() < s[j + 1].ave()) {
+                    Student temp = s[j];
+                    s[j] = s[j + 1];
+                    s[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    static int sea_Rank(Student[] s, String stud_name) {
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].stud_name.equalsIgnoreCase(stud_name)) {
+                while (i > 0 &&
+                       s[i].ave() == s[i - 1].ave()) {
+                    i--;
+                }
+                return i + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+
+        int[][] scORe = {
+            {98, 97, 93, 99},
+            {90, 92, 94, 96},
+            {81, 87, 89, 94},
+            {98, 97, 96, 99},
+            {80, 86, 84, 82},
+            {95, 96, 94, 97},
+            {88, 90, 91, 93},
+            {92, 94, 95, 96},
+            {89, 91, 93, 95},
+            {97, 98, 96, 99}
+        };
+
+        String[] names = {
+            "JISOO", "LISA", "ROSE", "JENNIE",
+            "WOONYU", "HYERI", "KIM", "KYLIE",
+            "KENDALL", "GEHLEE"
+        };
+
+        Student[] students = new Student[scORe.length];
+
+        for (int i = 0; i < scORe.length; i++) {
+            students[i] = new Student(names[i], scORe[i]);
+        }
+
+        sort(students);
+
+        System.out.println("---- STUDENT OVERALL RANKING ----");
+        System.out.printf("%-8s %-12s %s%n",
+                          "RANK", "STUDENT", "AVERAGE");
+
+        for (Student s : students) {
+            System.out.printf("%-8d %-12s %.2f%n",
+                sea_Rank(students, s.stud_name),
+                s.stud_name, s.ave());
+        }
+
+        String tar = "HYERI";
+        int rank = sea_Rank(students, tar);
+
+        if (rank != -1) {
+            System.out.println(tar + " IS RANKED, " + rank + ".");
+        } else {
+            System.out.println(" THE STUDENT NOT FOUND.");
+        }
+    }
+}
