@@ -1,0 +1,21 @@
+public class ThingsArray {
+    public static void main(String[] args) {
+
+        String[] Hermes_Bags = {
+            "Hermes Birkin 30",
+            "Hermes Kelly 28",
+            "Hermes Mini Kelly II",
+            "Hermes Constance 18",
+            "Hermes Picotin Lock 18"
+        };
+
+        System.out.println("-------- MY TOP 5 FAVORITE HERMES BAG MODELS --------");
+
+        for (int i = 0; i < Hermes_Bags.length; i++) {
+            System.out.println((i + 1) + ". " + Hermes_Bags[i]);
+        }
+
+        System.out.println("TOTAL FAVORITE HERMES BAG MODELS: "
+                + Hermes_Bags.length);
+    }
+}
