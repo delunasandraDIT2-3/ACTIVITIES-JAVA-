@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class SumSentinentelValue {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int totPrice = 0;
+
+        System.out.println("-------- BRUNO MARS INTERNATIONAL MERCH --------");
+
+        System.out.print("ENTER THE MERCH PURCHASE AMOUNT (kindly type -1 to finish): ");
+        int prICE = sc.nextInt();
+
+        while (prICE != -1) {
+            totPrice = totPrice + prICE;
+
+            System.out.print("ENTER ADDITIONAL MERCH AMOUNT: ");
+            prICE = sc.nextInt();
+        }
+
+        System.out.println("TOTAL PURCHASE AMOUNT: " + totPrice);
+        sc.close();
+    }
+}
