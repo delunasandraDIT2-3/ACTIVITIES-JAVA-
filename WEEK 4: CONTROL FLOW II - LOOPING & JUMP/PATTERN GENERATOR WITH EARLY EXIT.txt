@@ -1,0 +1,40 @@
+public class PatternGeneratorEarlyExit {
+    public static void main(String[] args) {
+
+        int run_Sections = 20;
+        int run_Lights = 20;
+
+        System.out.println("----- VICTORIA'S SECRET FASHION SHOW ------");
+        System.out.println("---------- ANGEL WINGS RUNWAY --------------");
+
+        for (int row = 1; row <= run_Sections; row++) {
+
+            //CONTINUE: Skip the reserved runway section.
+            if (row == 20) {
+                continue;
+            }
+
+            //Create the spacing for the runway design.
+            for (int space = 1; space <= run_Sections - row; space++) {
+                System.out.print(" ");
+            }
+
+            // Create crystal clear runway lights.
+            for (int light = 1; light <= row; light++) {
+
+                // BREAK: Stops at the runway light limit.
+                if (light > run_Lights) {
+                    break;
+                }
+
+                if (light == 1 || light == row || light == run_Lights) {
+                    System.out.print("V ");
+                } else {
+                    System.out.print("* ");
+                }
+            }
+
+            System.out.println();
+        }
+    }
+}
