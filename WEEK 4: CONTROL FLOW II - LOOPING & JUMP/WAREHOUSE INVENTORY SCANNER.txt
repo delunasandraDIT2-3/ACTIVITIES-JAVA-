@@ -1,0 +1,166 @@
+import java.util.Scanner;
+
+public class WarehouseInventory {
+
+    static Scanner input = new Scanner(System.in);
+
+    static int[][] prod = {
+        {50, 24, 17},
+        {74, -5, 19},
+        {52, 42, 10}
+    };
+
+    static void show_prod() {
+        System.out.println("\nWAREHOUSE ITEMS");
+
+        for (int i = 0; i < prod.length; i++) {
+            for (int j = 0; j < prod[i].length; j++) {
+                if (prod[i][j] == -1) {
+                    System.out.print("PRODUCT DAMAGED ");
+                } else {
+                    System.out.print(prod[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    static void cou_prod() {
+        int tot = 0;
+
+        for (int i = 0; i < prod.length; i++) {
+            for (int j = 0; j < prod[i].length; j++) {
+                if (prod[i][j] == -1) {
+                    continue;
+                }
+
+                tot = tot + prod[i][j];
+            }
+        }
+
+        System.out.println("TOTAL PRODUCTS AVAILABLE: " + tot);
+    }
+
+    static void check_prod() {
+        boolean foUNd = false;
+
+        for (int i = 0; i < prod.length; i++) {
+            for (int j = 0; j < prod[i].length; j++) {
+                if (prod[i][j] == -1) {
+                    continue;
+                }
+
+                if (prod[i][j] < 10) {
+                    System.out.println(
+                        "LOW STOCK FOUND AT A ROW " + (i + 1)
+                        + ", COLUMN " + (j + 1)
+                    );
+
+                    foUNd = true;
+                    break;
+                }
+            }
+
+            if (foUNd) {
+                break;
+            }
+        }
+
+        if (!foUNd) {
+            System.out.println("ALL SHELVES HAVE ENOUGH PRODUCT.");
+        }
+    }
+    
+    static void add_prod() {
+        int row, col, amount;
+
+        while (true) {
+            System.out.print("ENTER ROW NUMBER 1-3: ");
+            row = input.nextInt();
+
+            if (row >= 1 && row <= 3) {
+                break;
+            }
+
+            System.out.println("PLEASE ENTER A ROW FROM 1 TO 3.");
+        }
+
+        while (true) {
+            System.out.print("ENTER COLUMN NUMBER 1-3: ");
+            col = input.nextInt();
+
+            if (col >= 1 && col <= 3) {
+                break;
+            }
+
+            System.out.println("PLEASE ENTER A COLUMN FROM 1-3.");
+        }
+
+        if (prod[row - 1][col - 1] == -1) {
+            System.out.println("THIS SHELF IS DAMAGED.");
+            return;
+        }
+
+        while (true) {
+            System.out.print("ADDITIONAL PRODUCTS ");
+            amount = input.nextInt();
+
+            if (amount > 0) {
+                break;
+            }
+
+            System.out.println("PLEASE ENTER A NUMBER GREATER THAN ZERO.");
+        }
+
+        prod[row - 1][col - 1] += amount;
+
+        System.out.println("PRODUCTS ADDED SUCCESSFULLY!");
+        System.out.println(
+            "NEW PRODUCT COUNT: " + prod[row - 1][col - 1]
+        );
+    }
+
+    public static void main(String[] args) {
+        int choICe;
+
+        do {
+            System.out.println("\n---------- WAREHOUSE INVENTORY ----------");
+            System.out.println("1. SHOW PRODUCTS");
+            System.out.println("2. CHECK LOW STOCKS");
+            System.out.println("3. ADD PRODUCTS");
+            System.out.println("4. COUNT PRODUCTS");
+            System.out.println("5. EXIT");
+            System.out.print("CHOOSE AN OPTION: ");
+
+            choICe = input.nextInt();
+
+            switch (choICe) {
+                case 1:
+                    show_prod();
+                    break;
+
+                case 2:
+                    check_prod();
+                    break;
+
+                case 3:
+                    add_prod();
+                    break;
+
+                case 4:
+                    cou_prod();
+                    break;
+
+                case 5:
+                    System.out.println("THANK YOU SO MUCH. YOHOO DITO ANG TINGIN.");
+                    break;
+
+                default:
+                    System.out.println("INVALID OPTION. PLEASE TRY AGAIN.");
+            }
+
+        } while (choICe != 5);
+
+        input.close();
+    }
+}
